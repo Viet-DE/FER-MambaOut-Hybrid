@@ -1,0 +1,21 @@
+data:
+  train_path: "data/train.npz"
+  val_path: "data/val.npz"
+  test_path: "data/test.npz"
+  img_size: 128            # Sẽ đổi thành 112 nếu đo throughput báo thiếu VRAM
+  #batch_size: 64           # test local - 4
+  batch_size: 4
+  num_classes: 8
+
+model:
+  name: "mambaout_femto"
+  pretrained: true
+
+# Recipe trainng (sẽ đóng băng sau sweep nhỏ ở Tuần 2)
+train:
+  epochs: 40
+  warmup_epochs: 3
+  lr_backbone: 0.0002
+  weight_decay: 0.05
+  label_smoothing: 0.1
+  drop_path: 0.1
